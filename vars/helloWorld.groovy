@@ -2,20 +2,20 @@ def call(Map config = [:]) {
 //   echo "hello ${config.name}, nice to meet you ${config.day}. Just for testing ${config.test}"
   
   def app
-  def ImageNmme = config.ImageNmme
+  def ImageName = config.ImageName
   def CredentialID = config.CredentialID
   def Repository = config.Repository
   def TagName = config.TagName
   
-  echo " ImageName: ${ImageNmme}"
+  echo " ImageName: ${ImageName}"
   echo " CredentialID: ${CredentialID}"
   echo " Repository: ${Repository}"
   echo " TagName: ${TagName}"
   
-  if (isNull(ImageNmme)) {ex(ImageNmme)}
-  if ("!${CredentialID}") {ex(CredentialID)}
-  if ("!${Repository}") {ex(Repository)}
-  if ("!${TagName}") {ex(TagName)}
+  if (!ImageName) {ex(ImageName)}
+  if (!CredentialID) {ex(CredentialID)}
+  if (!Repository) {ex(Repository)}
+  if (!TagName) {ex(TagName)}
   
   stage "Pull image"
   app = docker.image("${ImageName}")
