@@ -7,7 +7,12 @@ def call(Map config = [:]) {
   def Repository = config.Repository
   def TagName = config.TagName
   
-  if ("!${ImageNmme}") {ex(ImageNmme)}
+  echo " ImageName: ${ImageNmme}"
+  echo " CredentialID: ${CredentialID}"
+  echo " Repository: ${Repository}"
+  echo " TagName: ${TagName}"
+  
+  if (isNull(ImageNmme)) {ex(ImageNmme)}
   if ("!${CredentialID}") {ex(CredentialID)}
   if ("!${Repository}") {ex(Repository)}
   if ("!${TagName}") {ex(TagName)}
